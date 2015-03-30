@@ -30,6 +30,13 @@ $ npm start
 ```
 
 Your application should run on the 8085 port so in your browser just go to [http://localhost:8085](http://localhost:8085)
+
+## Testing Your Application
+After the install process is over, you'll also be able to test your application using:
+
+```
+$ npm test
+```
                             
 Since this is an API, you wouldn't see anything on localhost:8085. So try using the APIs below:
 http://localhost:8085/api/products
