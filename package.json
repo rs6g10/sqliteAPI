@@ -1,0 +1,22 @@
+{
+  "name": "sqliteAPI",
+  "version": "0.0.1",
+  "author": "Rahul Sharma",
+  "email": "rahuldsharma@hotmail.co.uk",
+  "scripts": {
+    "test": "npm run test-node",
+    "test-node": "mocha -R spec ./server/tests/*.js",
+    "start": "node ./server.js"
+  },
+  "dependencies": {
+    "express": "~4.1.0",
+    "helmet": "~0.2.1",
+    "sqlite3": "latest",
+    "body-parser": "~1.0.1",
+    "winston": "^0.8.0",
+    "mocha": "latest",
+    "supertest": "latest",
+    "should": "latest",
+    "async": "latest"
+  }
+}

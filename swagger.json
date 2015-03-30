@@ -1,0 +1,143 @@
+{
+    "info": {
+        "version": "1.0",
+        "contact": {
+            "url": "https://github.com/rs6g10/sqliteAPI",
+            "name": "Rahul Sharma",
+            "email": "rahuldsharma@hotmail.co.uk"
+        },
+        "description": "SQLite API connects to local embedded SQLite database and returns products and reviews by enabling RESTful JSON output.",
+        "title": "SQLite API"
+    },
+    "paths": {
+        "/api/products/": {
+            "get": {
+                "tags": [
+                    "products"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful"
+                    },
+                    "404": {
+                        "description": "API does not exist."
+                    },
+                    "500": {
+                        "description": "could not products."
+                    }
+                },
+                "parameters": [
+                    {
+                        "required": false,
+                        "type": "integer",
+                        "description": "The query string, which points to number of items in a page. Default is 10.",
+                        "name": "pagesize",
+                        "in": "pagesize"
+                    },
+                    {
+                        "required": true,
+                        "type": "integer",
+                        "description": "The query string, gives a pointer to current page. Default is 1.",
+                        "name": "page",
+                        "in": "page"
+                    }
+                ],
+                "description": "Returns a view of products in a pagenated form. Default pagesize is 10. Page details can be found in the results in objects totalProducts, pageSize, currentPage",
+                "summary": "Retrieve products"
+            }
+        },
+        "/api/products/reviews": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Successful"
+                    },
+                    "404": {
+                        "description": "API does not exist."
+                    },
+                    "500": {
+                        "description": "could not products."
+                    }
+                },
+                "parameters": [
+                    {
+                        "required": false,
+                        "type": "integer",
+                        "description": "The query string, which points to number of items in a page. Default is 10.",
+                        "name": "pagesize",
+                        "in": "pagesize"
+                    },
+                    {
+                        "required": true,
+                        "type": "integer",
+                        "description": "The query string, gives a pointer to current page. Default is 1.",
+                        "name": "page",
+                        "in": "page"
+                    }
+                ],
+                "tags": [
+                    "products, reviews"
+                ],
+                "description": "Returns a concatenated view of products and reviews where reviews are array in product row. Default pagesize is 10. Page details can be found in the results in objects totalProducts, pageSize, currentPage",
+                "summary": "Retrieve a product of products and reviews"
+            }
+        },
+        "/api/reviews": {
+            "put": {
+                "responses": {
+                    "201": {
+                        "description": "new review inserted"
+                    },
+                    "400": {
+                        "description": "could not insert review or bad request"
+                    },
+                    "404": {
+                        "description": "API does not exist."
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "product_id",
+                        "description": "Product Id from products table.",
+                        "type": "integer",
+                        "paramType": "body",
+                        "required": true
+                    },
+                    {
+                        "name": "description",
+                        "description": "Description for the review.",
+                        "type": "string",
+                        "paramType": "body",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "reviews"
+                ],
+                "summary": "Puts an instance of Review in the reviews table"
+            }
+        }
+    },
+    "produces": [
+        "application/json"
+    ],
+    "basePath": "/",
+    "tags": [
+        {
+            "name": "default",
+            "description": "Default namespace"
+        },
+        {
+            "name": "query",
+            "description": "Query operations"
+        },
+        {
+            "name": "status",
+            "description": "Status operations"
+        }
+    ],
+    "swagger": "2.0",
+    "consumes": [
+        "application/json"
+    ]
+}
